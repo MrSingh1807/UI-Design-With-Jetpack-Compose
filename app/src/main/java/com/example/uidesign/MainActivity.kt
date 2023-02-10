@@ -31,15 +31,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     UIDesignTheme {
-        Surface(modifier = Modifier.fillMaxSize()) {
-                ExpandableCard(
-                    title = "My Title",
-                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-                            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
-                            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                            "ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                )
-        }
+        CustomizedTextField()
     }
 }
 
