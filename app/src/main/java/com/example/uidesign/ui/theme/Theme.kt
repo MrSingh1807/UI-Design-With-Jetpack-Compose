@@ -33,7 +33,7 @@ fun UIDesignTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
         DarkColorPalette
     } else {
         LightColorPalette
-    }
+    } 
 
     MaterialTheme(
         colors = colors,
