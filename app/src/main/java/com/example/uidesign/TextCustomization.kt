@@ -17,10 +17,12 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.uidesign.ui.theme.UIDesignTheme
@@ -83,7 +85,7 @@ fun RepeatText() {
 }
 
 @Composable
-fun TextSelection(){
+fun TextSelection() {
     SelectionContainer {
         Column {
             Text(text = "Mr Singh")
@@ -95,8 +97,48 @@ fun TextSelection(){
     }
 }
 
+@Composable
+fun Script(
+    normalText: String,
+    normalFontSize: TextUnit = MaterialTheme.typography.subtitle1.fontSize,
+    superText: String,
+    superTextFontSize: TextUnit = MaterialTheme.typography.overline.fontSize,
+    superTextFontWeight: FontWeight = FontWeight.Normal
+) {
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(50.dp),
+        textAlign = TextAlign.Center,
+        text = buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(fontSize = normalFontSize)
+            ) {
+                append(normalText)
+            }
+            withStyle(
+                style = SpanStyle(
+                    fontSize = superTextFontSize,
+                    fontWeight = superTextFontWeight,
+                    baselineShift = BaselineShift.Superscript  // SubScript
+                )
+            ) {
+                append(superText)
+            }
+        }
+    )
+}
+
 @Preview
 @Composable
 fun Preview() {
+    Surface(modifier = Modifier.fillMaxSize()) {
 
+        Script(
+            normalText = "Mr",
+            superText = "Singh",
+            normalFontSize = MaterialTheme.typography.h4.fontSize,
+            superTextFontSize = MaterialTheme.typography.h6.fontSize
+        )
+    }
 }
