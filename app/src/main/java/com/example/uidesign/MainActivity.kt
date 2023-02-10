@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -26,21 +27,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainScreen() {
     UIDesignTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .background(Color.LightGray)
-            ) {
-                TextCustomization()
-                AnnotatedStringInText()
-                RepeatText()
-                TextSelection()
-            }
+                ExpandableCard(
+                    title = "My Title",
+                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+                            "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+                            "aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
+                            "ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                )
         }
     }
 }
