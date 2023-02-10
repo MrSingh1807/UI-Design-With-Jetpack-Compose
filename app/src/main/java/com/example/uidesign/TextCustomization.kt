@@ -2,6 +2,8 @@ package com.example.uidesign
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -80,9 +82,21 @@ fun RepeatText() {
     )
 }
 
+@Composable
+fun TextSelection(){
+    SelectionContainer {
+        Column {
+            Text(text = "Mr Singh")
+            DisableSelection {
+                Text(text = "Mr Singh")
+            }
+            Text(text = "Mr Singh")
+        }
+    }
+}
+
 @Preview
 @Composable
 fun Preview() {
-    MainScreen()
 
 }

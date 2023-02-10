@@ -39,6 +39,7 @@ fun MainScreen() {
                 TextCustomization()
                 AnnotatedStringInText()
                 RepeatText()
+                TextSelection()
             }
         }
     }
