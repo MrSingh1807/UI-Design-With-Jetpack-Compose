@@ -134,11 +134,11 @@ fun Script(
 fun Preview() {
     Surface(modifier = Modifier.fillMaxSize()) {
 
-//        Script(
-//            normalText = "Mr",
-//            superText = "Singh",
-//            normalFontSize = MaterialTheme.typography.h4.fontSize,
-//            superTextFontSize = MaterialTheme.typography.h6.fontSize
-//        )
+        Script(
+            normalText = "Mr",
+            superText = "Singh",
+            normalFontSize = MaterialTheme.typography.h4.fontSize,
+            superTextFontSize = MaterialTheme.typography.h6.fontSize
+        )
     }
 }

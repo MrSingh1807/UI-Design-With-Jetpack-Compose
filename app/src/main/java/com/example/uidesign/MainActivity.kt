@@ -1,6 +1,7 @@
 package com.example.uidesign
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -16,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.uidesign.Designs.GoogleButton
 import com.example.uidesign.ui.theme.UIDesignTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,11 +29,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainScreen() {
     UIDesignTheme {
-        CustomizedTextField()
+            GoogleButton(onClicked = {
+                Log.d("Google BTN", "Clicked")
+            })
     }
 }
 
