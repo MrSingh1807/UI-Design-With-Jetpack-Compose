@@ -32,9 +32,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     UIDesignTheme {
-            GoogleButton(onClicked = {
-                Log.d("Google BTN", "Clicked")
-            })
+            PasswordTextField()
     }
 }
 
