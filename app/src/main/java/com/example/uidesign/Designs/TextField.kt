@@ -79,7 +79,7 @@ fun CustomizedTextField() {
 }
 
 @Composable
-fun PasswordTextField() {
+fun Password() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -88,7 +88,7 @@ fun PasswordTextField() {
         var password by rememberSaveable { mutableStateOf("") }
         var passwordVisibility by remember { mutableStateOf(false) }
 
-        val icon = if (passwordVisibility){
+        val icon = if (passwordVisibility) {
             painterResource(id = R.drawable.ic_visibility)
         } else {
             painterResource(id = R.drawable.visibility_off)
@@ -104,12 +104,37 @@ fun PasswordTextField() {
                     onClick = {
                         passwordVisibility = !passwordVisibility
                     }) {
-                    Icon(painter = icon,
-                        contentDescription = "visibility icon")
+                    Icon(
+                        painter = icon,
+                        contentDescription = "visibility icon"
+                    )
                 }
             },
             visualTransformation = if (passwordVisibility) VisualTransformation.None
-        else PasswordVisualTransformation()
+            else PasswordVisualTransformation()
+        )
+    }
+}
+@Composable
+fun ManageCharacterLimits() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        var name by remember { mutableStateOf(" ") }
+        val maxChar = 10
+
+        OutlinedTextField(
+            value = name,
+            onValueChange = {
+                if (it.length < maxChar) {
+                    name = it
+                }
+            },
+            label = { Text(text = "Name") },
+            placeholder = { Text(text = "Enter Your Name") },
+            maxLines = 1
         )
     }
 }
@@ -118,6 +143,6 @@ fun PasswordTextField() {
 @Composable
 fun PreviewTextField() {
     Surface(modifier = Modifier.fillMaxSize()) {
-        PasswordTextField()
+        ManageCharacterLimits()
     }
 }
