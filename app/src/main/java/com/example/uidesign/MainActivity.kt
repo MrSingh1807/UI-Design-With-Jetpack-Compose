@@ -28,32 +28,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        var value by remember { mutableStateOf(0) }
-
-        CustomComponent(
-            indicatorValue = value
-        )
-
-        TextField(
-            value = value.toString(),
-            onValueChange = {
-                value = if (it.isNotEmpty()) {
-                    it.toInt()
-                } else {
-                    0
-                }
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            )
-        )
 
 
-    }
 }
 
 @Preview(showBackground = true)

@@ -1,16 +1,17 @@
 package com.example.uidesign.Designs.CustomComponents
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -29,7 +31,35 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CustomComponent(
+fun CircularIndicator(){
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        var value by remember { mutableStateOf(0) }
+
+        CustomComponents(
+            indicatorValue = value
+        )
+
+        TextField(
+            value = value.toString(),
+            onValueChange = {
+                value = if (it.isNotEmpty()) {
+                    it.toInt()
+                } else {
+                    0
+                }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number
+            )
+        )
+    }
+}
+
+@Composable
+fun CustomComponents(
     canvasSize: Dp = 300.dp,
     indicatorValue: Int = 0,
     maxIndicatorValue: Int = 100,
@@ -184,5 +214,5 @@ fun EmbeddedElements(
 @Preview(showBackground = true)
 @Composable
 fun PreviewCustomComponent() {
-    CustomComponent()
+    CircularIndicator()
 }
