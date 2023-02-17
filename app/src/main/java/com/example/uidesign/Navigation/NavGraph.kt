@@ -27,16 +27,12 @@ fun SetUpNavGraph(navController: NavHostController) {
             arguments = listOf(
                 navArgument(DETAILS_ARGUMENT_KEY) {
                     type = NavType.IntType
-                },
-                navArgument(DETAILS_ARGUMENT_KEY_NAME) {
-                    type = NavType.StringType
-                }
-            ),
+                    defaultValue = 0
+                }),
 
             ) {
             Log.d("Args", it.arguments?.getInt(DETAILS_ARGUMENT_KEY).toString())
-            Log.d("Args", it.arguments?.getString(DETAILS_ARGUMENT_KEY_NAME).toString())
-
+//            Log.d("Args", it.arguments?.getString(DETAILS_ARGUMENT_KEY_NAME).toString())
             DetailScreen(navController)
         }
     }
