@@ -15,49 +15,35 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.uidesign.Designs.CustomComponents.CustomComponent
+import com.example.uidesign.Navigation.SetUpNavGraph
+import com.example.uidesign.ui.theme.UIDesignTheme
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            UIDesignTheme {
+                navController = rememberNavController()
+
+                MainScreen(navController = navController)
+            }
+
         }
     }
 }
 
 @Composable
-fun MainScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        var value by remember { mutableStateOf(0) }
-
-        CustomComponent(
-            indicatorValue = value
-        )
-
-        TextField(
-            value = value.toString(),
-            onValueChange = {
-                value = if (it.isNotEmpty()) {
-                    it.toInt()
-                } else {
-                    0
-                }
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            )
-        )
-
-
-    }
+fun MainScreen(navController: NavHostController) {
+    SetUpNavGraph(navController = navController)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MainScreen()
+    MainScreen(rememberNavController())
 }
