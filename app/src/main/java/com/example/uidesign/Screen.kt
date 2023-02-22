@@ -13,4 +13,7 @@ sealed class Screen(val route: String) {
             return "details_screen?id=$id&name=$name"
         }
     }
+
+    object LogIn : Screen("log_in")
+    object SignUp : Screen ("sign_up")
 }

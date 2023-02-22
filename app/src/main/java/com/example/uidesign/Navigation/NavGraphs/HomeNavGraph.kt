@@ -1,21 +1,20 @@
 package com.example.uidesign.Navigation
 
 import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
+import androidx.navigation.*
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.example.uidesign.DETAILS_ARGUMENT_KEY
 import com.example.uidesign.DETAILS_ARGUMENT_KEY_NAME
+import com.example.uidesign.HOME_ROUTE
 import com.example.uidesign.Screen
 
-@Composable
-fun SetUpNavGraph(navController: NavHostController) {
-    NavHost(
-        navController = navController,
-        startDestination = Screen.Home.route
+
+fun NavGraphBuilder.homeNavGraph(
+    navController: NavHostController
+){
+    navigation(
+        startDestination = Screen.Home.route,
+        route = HOME_ROUTE
     ) {
         composable(
             route = Screen.Home.route
