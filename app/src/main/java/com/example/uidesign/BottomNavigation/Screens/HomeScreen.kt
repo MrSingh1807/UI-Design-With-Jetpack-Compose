@@ -1,8 +1,8 @@
-package com.example.uidesign.Navigation
+package com.example.uidesign.BottomNavigation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -18,21 +18,20 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.uidesign.AUTHENTICATION_ROUTE
-import com.example.uidesign.HOME_ROUTE
-import com.example.uidesign.Screen
 
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen() {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
+            .background(Color.LightGray),
         contentAlignment = Alignment.Center
     ) {
         Text(
             modifier = Modifier.clickable {
-                navController.navigate(route = Screen.Details.passNameAndId())
+
             },
-            text = "Home Screen",
+            text = "Home ",
             color = Color.Magenta,
             fontSize = MaterialTheme.typography.h3.fontSize,
             fontWeight = FontWeight.Bold
@@ -42,7 +41,6 @@ fun HomeScreen(navController: NavHostController) {
                 .padding(top = 150.dp)
                 .clickable {
                     // Navigate to other NavGraph
-                    navController.navigate(route = AUTHENTICATION_ROUTE)
                 },
             text = "LogIn / SignUp",
             textAlign = TextAlign.Center,
@@ -56,5 +54,5 @@ fun HomeScreen(navController: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewHomeScreen() {
-    HomeScreen(rememberNavController())
+    HomeScreen()
 }
